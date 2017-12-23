@@ -11,4 +11,8 @@ Quais categorias você quer ler primeiro.
 
 - Node
 
-- Golang: Macaron, goquery
+- Golang: Macaron, goquery, gin
+
+1. Construa a imagem: `docker build -t o-q-le-agora .`
+
+Execute o programa: `docker run --rm -p 4000:4000 -v "${PWD}":/usr/src/app -w /usr/src/app -it o-q-le-agora gin -p 4000 run main.go`
