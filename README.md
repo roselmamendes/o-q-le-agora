@@ -11,4 +11,4 @@ Quais categorias você quer ler primeiro.
 
 - Node
 
-- Golang
+- Golang: Macaron, goquery
