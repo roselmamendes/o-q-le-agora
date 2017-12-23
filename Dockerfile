@@ -5,6 +5,7 @@ COPY . .
 
 # dependencies
 RUN go get -v github.com/codegangsta/gin
+RUN go get -v github.com/stretchr/testify
 
 RUN go-wrapper download   # "go get -d -v ./..."
 RUN go-wrapper install    # "go install -v ./..."

@@ -10,7 +10,7 @@ func main() {
 	m.Use(macaron.Renderer())
 
 	m.Get("/", func(ctx *macaron.Context) {
-		ctx.Data["Categorias"] = artigos.Categorias
+		ctx.Data["Categorias"] = artigos.ObtemCategorias()
 		ctx.HTML(200, "index") // 200 is the response code.
 	})
 	

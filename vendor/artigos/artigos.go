@@ -10,7 +10,7 @@ type Artigo struct {
 	Lido bool
 }
 
-var Categorias []Categoria
+var categorias []Categoria
 
 func init() {
 	var artigosFemiNegro []Artigo
@@ -20,5 +20,9 @@ func init() {
 	artigosFemiNegro = append(artigosFemiNegro, artigo2)
 
 	var feminismoNegro = Categoria{Artigos: artigosFemiNegro, Nome: "Feminismo Negro"}
-	Categorias = append(Categorias, feminismoNegro)
+	categorias = append(categorias, feminismoNegro)
+}
+
+func ObtemCategorias() []Categoria{
+	return categorias
 }
