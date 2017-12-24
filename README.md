@@ -10,7 +10,7 @@ Quais categorias você quer ler primeiro.
 
 ### O projeto usa
 
-- Node
+- Docker
 
 - Golang: Macaron, goquery, gin
 
