@@ -67,29 +67,33 @@
           <div class="templatemo-flex-row flex-content-row">
 
           </div>
-
+	  {{ range $i, $categoria := .Categorias }}
             <div class="col-1">
               <div class="panel panel-default templatemo-content-widget white-bg no-padding templatemo-overflow-hidden">
                 <i class="fa fa-times"></i>
-		 {{ range $i, $categoria := .Categorias }}
-                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">{{$categoria.Nome}}</h2></div>
+		
+                <div class="panel-heading templatemo-position-relative"><h2 class="text-uppercase">{{$categoria.Nome}} - para ler: {{ $categoria.NaoLidos }}</h2></div>
 		<div class="table-responsive">
 		  <table class="table table-striped table-bordered">
 		    <tbody>
 		      
 		      {{ range $y, $artigo := $categoria.Artigos }}
+		      {{ if $artigo.Lido }}
+		      {{ else }}
 		      <tr>
 		      	<td>{{$artigo.Url}}</td>
 		      </tr>
+		      {{ end }}
 		      {{ end }}
 
 		    </tbody>
 		  </table>
 		</div>
-		{{ end }}
+
                 
               </div>
-            </div>           
+            </div>
+ 	{{ end }}
           </div>
           <footer class="text-right">
             <p>Copyright &copy; NegraTec
