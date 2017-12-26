@@ -18,6 +18,13 @@ func main() {
 		ctx.Data["Categorias"] = artigos.ObtemCategorias()
 		ctx.HTML(200, "todas-categorias") // 200 is the response code.
 	})
+
+	m.Get("/categoria/:name", func(ctx *macaron.Context) {
+		categoriaNome := ctx.Params(":name")
+		categoriaParaMostrar := artigos.ObtemCategoria(categoriaNome)
+		ctx.Data["Categoria"] = categoriaParaMostrar
+		ctx.HTML(200, "categoria")
+	})
 	
 	m.Run()
 }

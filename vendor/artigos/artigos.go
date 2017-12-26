@@ -45,7 +45,7 @@ func ObtemPrioridadeDeLeitura() []Categoria{
 }
 
 func ContaArtigosNaoLidosDe(nomeCategoria string) int {
-	categoria := obtemCategoria(nomeCategoria)
+	categoria := ObtemCategoria(nomeCategoria)
 	var contador int
 	
 	for _, artigo := range categoria.Artigos {
@@ -56,7 +56,7 @@ func ContaArtigosNaoLidosDe(nomeCategoria string) int {
 	return contador
 }
 
-func obtemCategoria(nomeCategoria string) (categoriaProcurada Categoria) {
+func ObtemCategoria(nomeCategoria string) (categoriaProcurada Categoria) {
 	for _, categoria := range categorias {
 		if categoria.Nome == nomeCategoria {
 			categoriaProcurada = categoria
