@@ -32,35 +32,3 @@ func init() {
 func ObtemCategorias() []Categoria{
 	return categorias
 }
-
-func ObtemPrioridadeDeLeitura() []Categoria{
-	var prioridades []Categoria
-	for _, categoria := range categorias {
-		if categoria.Prioridade {
-			categoria.NaoLidos = ContaArtigosNaoLidosDe(categoria.Nome)
-			prioridades = append(prioridades, categoria)
-		}
-	}
-	return prioridades
-}
-
-func ContaArtigosNaoLidosDe(nomeCategoria string) int {
-	categoria := ObtemCategoria(nomeCategoria)
-	var contador int
-	
-	for _, artigo := range categoria.Artigos {
-		if !artigo.Lido {
-			contador += 1
-		}
-	}
-	return contador
-}
-
-func ObtemCategoria(nomeCategoria string) (categoriaProcurada Categoria) {
-	for _, categoria := range categorias {
-		if categoria.Nome == nomeCategoria {
-			categoriaProcurada = categoria
-		}
-	}
-	return categoriaProcurada
-}
