@@ -10,12 +10,11 @@ Quais categorias você quer ler primeiro.
 
 ### O projeto usa
 
-- Docker
+- Docker, Docker Compose
 
 - Golang: Macaron, goquery, gin
 
-1. Construa a imagem: `docker build -t o-q-le-agora .`
 
-Execute o programa: `docker run --rm -p 4000:4000 -v "${PWD}":/go/src/app -w /go/src/app -it o-q-le-agora gin -p 4000 run main.go`
+Execute o programa: `docker-compose up --build`
 
-Executar testes: `docker run --rm -v "${PWD}":/go/src/app -w /go/src/app -it o-q-le-agora go test`
+Executar testes: `docker-compose run web go test`
