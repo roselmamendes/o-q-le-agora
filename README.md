@@ -12,7 +12,7 @@ Quais categorias você quer ler primeiro.
 
 - Docker, Docker Compose
 
-- Golang: Macaron, goquery, gin
+- Golang: Macaron, goquery, gin, mgo
 
 
 Execute o programa: `docker-compose up --build`

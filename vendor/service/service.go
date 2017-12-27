@@ -1,27 +1,28 @@
 package service
 
 import (
+	"bancoDeDados"
+	"gopkg.in/mgo.v2/bson"
 	"artigos"
 )
 
-func ObtemCategorias() []artigos.Categoria{
-	return artigos.ObtemCategorias()
+func ObtemCategorias() ([]artigos.Categoria, string) {
+	return bancoDeDados.ObtemCategorias(bson.M{})
 }
 
-func ObtemPrioridadeDeLeitura() []artigos.Categoria{
+func ObtemPrioridadeDeLeitura() ([]artigos.Categoria, string){
 	var prioridades []artigos.Categoria
-	categorias := ObtemCategorias()
+	categorias, erro := ObtemCategorias()
 	for _, categoria := range categorias {
 		if categoria.Prioridade {
-			categoria.NaoLidos = ContaArtigosNaoLidosDe(categoria.Nome)
+			categoria.NaoLidos = ContaArtigosNaoLidosDe(categoria)
 			prioridades = append(prioridades, categoria)
 		}
 	}
-	return prioridades
+	return prioridades, erro
 }
 
-func ContaArtigosNaoLidosDe(nomeCategoria string) int {
-	categoria := ObtemCategoria(nomeCategoria)
+func ContaArtigosNaoLidosDe(categoria artigos.Categoria) int {
 	var contador int
 	
 	for _, artigo := range categoria.Artigos {
@@ -32,14 +33,9 @@ func ContaArtigosNaoLidosDe(nomeCategoria string) int {
 	return contador
 }
 
-func ObtemCategoria(nomeCategoria string) (categoriaProcurada artigos.Categoria) {
-	categorias := ObtemCategorias()
-	for _, categoria := range categorias {
-		if categoria.Nome == nomeCategoria {
-			categoriaProcurada = categoria
-		}
-	}
-	return categoriaProcurada
+func ObtemCategoria(nomeCategoria string) (artigos.Categoria, string) {
+	categorias, erro := bancoDeDados.ObtemCategorias(bson.M{"name": nomeCategoria})
+	return categorias[0], erro
 }
 
 
