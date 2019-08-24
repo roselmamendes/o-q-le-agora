@@ -5,16 +5,3 @@
 Salve os links que quer ler por categoria/tópico/etc.
 
 Quais categorias você quer ler primeiro.
-
-## Contribuindo com o projeto
-
-### O projeto usa
-
-- Docker, Docker Compose
-
-- Golang: Macaron, goquery, gin, mgo
-
-
-Execute o programa: `docker-compose up --build`
-
-Executar testes: `docker-compose run web go test`
