@@ -10,6 +10,8 @@ jobs:
           name: Instala dependencias
           command: go get -v -t -d ./...
   tests:
+    docker:
+      - image: circleci/golang:1.9
     working_directory: /go/src/github.com/roselmamendes/o-q-le-agora
     steps:
       - run:
