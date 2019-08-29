@@ -1,13 +1,5 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/golang:1.9
-    working_directory: /go/src/github.com/roselmamendes/o-q-le-agora
-    steps:
-      - checkout
-      - run:
-          name: Instala dependencias
           command: go get -v -t -d ./...
   tests:
     docker:
@@ -18,7 +10,9 @@ jobs:
       - checkout
       - run:
           name: Executa testes
-          command: go test
+          command: |
+            go get -v -t -d ./...
+            go test
 
 workflows:
  version: 2
