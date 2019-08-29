@@ -44,7 +44,7 @@ func mostraErro(erro string, mensagem string) {
 }
 
 func GetDatabase() {
-		clientOptions := options.Client().ApplyURI("mongodb://db:27017")
+		clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
 	    client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	    if err != nil {

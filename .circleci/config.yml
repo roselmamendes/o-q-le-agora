@@ -12,8 +12,10 @@ jobs:
   tests:
     docker:
       - image: circleci/golang:1.9
+      - image: circleci/mongo:latest
     working_directory: /go/src/github.com/roselmamendes/o-q-le-agora
     steps:
+      - checkout
       - run:
           name: Executa testes
           command: go test
