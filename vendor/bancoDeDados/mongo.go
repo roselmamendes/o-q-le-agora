@@ -14,18 +14,18 @@ var db     *mongo.Database
 
 func init() {
 	GetDatabase()
-// 	var feminismoNegro = artigos.Categoria{Nome: "Feminismo Negro", Prioridade: false, NaoLidos: 0}
-// 	var prioridade = artigos.Categoria{Artigos:[]artigos.Artigo{{Url: "url2", Lido: false}}, Nome:"Prioridade", Prioridade: true, NaoLidos: 0}
-// 	var prioridade2 = artigos.Categoria{Artigos: []artigos.Artigo{{Url: "url1", Lido: true}}, Nome:"Prioridade2", Prioridade: true, NaoLidos: 0}
+	var feminismoNegro = artigos.Categoria{Nome: "Feminismo Negro", Prioridade: false, NaoLidos: 0}
+	var prioridade = artigos.Categoria{Artigos:[]artigos.Artigo{{Url: "url2", Lido: false}}, Nome:"Prioridade", Prioridade: true, NaoLidos: 0}
+	var prioridade2 = artigos.Categoria{Artigos: []artigos.Artigo{{Url: "url1", Lido: true}}, Nome:"Prioridade2", Prioridade: true, NaoLidos: 0}
 	
-// 	err3 := AdicionaCategoria(prioridade)
-// 	mostraErro(err3, "Erro no metodo AdicionaCategoria")
+	err3 := AdicionarCategoria(prioridade)
+	mostraErro(err3, "Erro no metodo AdicionaCategoria")
 
-// 	err4 := AdicionaCategoria(prioridade2)
-// 	mostraErro(err4, "Erro no metodo AdicionaCategoria")
+	err4 := AdicionarCategoria(prioridade2)
+	mostraErro(err4, "Erro no metodo AdicionaCategoria")
 
-// 	err0 := AdicionaCategoria(feminismoNegro)
-// 	mostraErro(err0, "Erro no metodo AdicionaCategoria")
+	err0 := AdicionarCategoria(feminismoNegro)
+	mostraErro(err0, "Erro no metodo AdicionaCategoria")
 	
 // 	var artigo1 = artigos.Artigo{Url: "http://algumtexto.com", Lido: false}
 // 	var artigo2 = artigos.Artigo{Url: "http://algumtexto.com", Lido: false}

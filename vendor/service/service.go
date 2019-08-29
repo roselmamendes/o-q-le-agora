@@ -23,7 +23,7 @@ func ObtemPrioridadeDeLeitura() ([]artigos.Categoria, string){
 }
 
 func ContaArtigosNaoLidosDe(categoria artigos.Categoria) int {
-	var contador int
+	contador := 0
 	
 	for _, artigo := range categoria.Artigos {
 		if !artigo.Lido {
