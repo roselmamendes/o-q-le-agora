@@ -6,7 +6,7 @@ COPY . .
 # dependencies
 RUN go get -v github.com/codegangsta/gin
 RUN go get -v github.com/stretchr/testify
-RUN go get -v gopkg.in/mgo.v2
+RUN go get -v go.mongodb.org/mongo-driver/mongo
 
 RUN go-wrapper download   # "go get -d -v ./..."
 RUN go-wrapper install    # "go install -v ./..."

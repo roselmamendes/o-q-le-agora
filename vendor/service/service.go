@@ -38,4 +38,9 @@ func ObtemCategoria(nomeCategoria string) (artigos.Categoria, string) {
 	return categorias[0], erro
 }
 
+func AdicionarCategoria(categoria artigos.Categoria) string {
+	erro := bancoDeDados.AdicionarCategoria(categoria)
+	return erro
+}
+
 
