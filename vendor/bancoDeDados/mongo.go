@@ -12,54 +12,29 @@ import (
 
 var db     *mongo.Database
 
-func init() {
-	GetDatabase()
-	var feminismoNegro = artigos.Categoria{Nome: "Feminismo Negro", Prioridade: false, NaoLidos: 0}
-	var prioridade = artigos.Categoria{Artigos:[]artigos.Artigo{{Url: "url2", Lido: false}}, Nome:"Prioridade", Prioridade: true, NaoLidos: 0}
-	var prioridade2 = artigos.Categoria{Artigos: []artigos.Artigo{{Url: "url1", Lido: true}}, Nome:"Prioridade2", Prioridade: true, NaoLidos: 0}
-	
-	err3 := AdicionarCategoria(prioridade)
-	mostraErro(err3, "Erro no metodo AdicionaCategoria")
-
-	err4 := AdicionarCategoria(prioridade2)
-	mostraErro(err4, "Erro no metodo AdicionaCategoria")
-
-	err0 := AdicionarCategoria(feminismoNegro)
-	mostraErro(err0, "Erro no metodo AdicionaCategoria")
-	
-// 	var artigo1 = artigos.Artigo{Url: "http://algumtexto.com", Lido: false}
-// 	var artigo2 = artigos.Artigo{Url: "http://algumtexto.com", Lido: false}
-
-// 	err1 := AdicionaArtigo("Feminismo Negro", artigo1)
-// 	mostraErro(err1, "Erro no metodo AdicionaArtigo")
-
-// 	err2 := AdicionaArtigo("Feminismo Negro", artigo2)
-// 	mostraErro(err2, "Erro no metodo AdicionaArtigo")	
-}
-
 func mostraErro(erro string, mensagem string) {
 	if erro != "" {
 		fmt.Println(mensagem, erro)
 	}
 }
 
-func GetDatabase() {
-		clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
-	    client, err := mongo.Connect(context.TODO(), clientOptions)
+func ConfiguraBanco(connectionString string) {
+	clientOptions := options.Client().ApplyURI(connectionString)
+    client, err := mongo.Connect(context.TODO(), clientOptions)
 
-	    if err != nil {
-	        log.Fatal(err)
-	    }
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	    err = client.Ping(context.TODO(), nil)
+    err = client.Ping(context.TODO(), nil)
 
-	    if err != nil {
-	        log.Fatal(err)
-	    }
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	    fmt.Println("Connected to MongoDB!")
+    fmt.Println("Connected to MongoDB!")
 
-	    db = client.Database("leagora")
+    db = client.Database("leagora")
 }
 
 func ObtemCategorias(q interface{}) (resultadosBusca []artigos.Categoria, searchErr string) {

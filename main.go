@@ -4,9 +4,18 @@ import (
 	"gopkg.in/macaron.v1"
 	"service"
 	"fmt"
+	"os"
+	"bancoDeDados"
 )
+var CONNECTIONSTRING string
+
+func init(){
+	CONNECTIONSTRING = os.Getenv("CONNECTIONSTRING")
+}
 
 func main() {
+	bancoDeDados.ConfiguraBanco(CONNECTIONSTRING)
+
 	m := macaron.Classic()
 	m.Use(macaron.Renderer())
 

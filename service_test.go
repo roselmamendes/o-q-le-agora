@@ -3,12 +3,16 @@ package main
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"os"
 	"artigos"
 	"service"
 	"bancoDeDados"
 )
 
+var connectionString = os.Getenv("CONNECTIONSTRING")
+
 func TestObtemCategorias(t *testing.T) {
+	bancoDeDados.ConfiguraBanco(connectionString)
 	bancoDeDados.LimpaBanco()
 	expectedCategoria := artigos.Categoria{Nome: "Feminismo Negro"}
 	service.AdicionarCategoria(expectedCategoria)
@@ -21,6 +25,7 @@ func TestObtemCategorias(t *testing.T) {
 }
 
 func TestObtemCategoriasPrioritarias(t *testing.T) {
+	bancoDeDados.ConfiguraBanco(connectionString)
 	bancoDeDados.LimpaBanco()
 	expectedCategoria := artigos.Categoria{
 		Artigos: []artigos.Artigo{{Url: "url2", Lido: false}}, 
